@@ -1,4 +1,4 @@
-# XSS Scanner GUI
+# ⚡ XSS Scanner GUI
 
 Modern GUI-based XSS scanner focused on speed, usability and practical testing workflows.
 
@@ -6,7 +6,7 @@ Developed by **bnthedev**.
 
 ---
 
-## Features
+## ✨ Features
 
 - Automated XSS parameter discovery
 - Fast multi-threaded scanning
@@ -18,5 +18,6 @@ Developed by **bnthedev**.
 - Save scan results
 - Modern dark interface
 
----
-
+```bash
+/screenshots/main.png
+/screenshots/results.png
