@@ -18,6 +18,7 @@ Developed by **bnthedev**.
 - Save scan results
 - Modern dark interface
 
-```bash
-/screenshots/main.png
-/screenshots/results.png
+
+![Main Window](screenshots/main.png)
+
+![Results](screenshots/results.png)
