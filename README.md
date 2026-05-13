@@ -19,6 +19,4 @@ Developed by **bnthedev**.
 - Modern dark interface
 
 
-![Main Window](screenshots/main.png)
-
-![Results](screenshots/results.png)
+![Main Window](screenshots/main.png) ![Results](screenshots/results.png)
