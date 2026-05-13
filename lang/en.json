@@ -1,0 +1,74 @@
+{
+  "app_title": "XSS Scanner — Pen Test Tool - by BNTHEDEV",
+  "app_subtitle": "Pen-test tool — only use on sites you own or have permission to test",
+  "status_idle": "IDLE",
+  "status_scanning": "SCANNING",
+  "status_done_clean": "DONE — clean",
+  "status_done_vulns": "DONE — {count} VULNERABILITIES!",
+
+  "section_target": "🎯 TARGET",
+  "section_options": "⚙️ OPTIONS",
+  "section_auth": "🔐 AUTH (optional)",
+
+  "opt_crawl": "Crawl page (find all URLs)",
+  "opt_forms": "Test forms (GET/POST)",
+  "opt_params": "Test URL parameters",
+  "opt_headers": "Test HTTP headers",
+  "opt_cookies": "Test cookies",
+
+  "label_delay": "Delay between requests (ms):",
+  "label_maxpages": "Max pages to crawl:",
+  "label_payloads": "Payloads: {count}",
+  "label_cookie": "Cookie:",
+  "label_auth": "Auth header (Bearer ...):",
+
+  "btn_start": "▶  START SCAN",
+  "btn_stop": "⏹  STOP",
+  "btn_export": "💾  Export results",
+
+  "stat_tested": "TESTED",
+  "stat_vulns": "VULNERABILITIES",
+  "stat_forms": "FORMS",
+  "stat_pages": "PAGES",
+
+  "tab_log": "📋 Live log",
+  "tab_vulns": "🚨 Vulnerabilities",
+  "tab_payloads": "💉 Payloads ({count})",
+
+  "col_url": "URL",
+  "col_type": "Type",
+  "col_param": "Parameter",
+  "col_payload": "Payload",
+  "col_severity": "Severity",
+  "detail_label": "Detail:",
+  "detail_text": "URL: {url}\nType: {type}  |  Parameter: {param}  |  Severity: {severity}\nPayload: {payload}",
+
+  "lang_label": "🌐 Language:",
+
+  "confirm_title": "Confirmation",
+  "confirm_msg": "Start XSS scan on:\n{url}\n\nOnly use this tool on sites you OWN or have written permission to test.\n\nContinue?",
+  "warn_no_url_title": "Missing URL",
+  "warn_no_url_msg": "Please enter a target URL.",
+
+  "log_start": "🚀 Starting scan: {url}",
+  "log_crawling": "🕷️  Crawling page...",
+  "log_crawled": "   Found {count} URLs.",
+  "log_testing": "🔍 Testing: {url}",
+  "log_params": "   Parameters: {params}",
+  "log_forms": "   Forms: {count}",
+  "log_stopped": "⏹ Scan stopped by user.",
+  "log_done_clean": "\n✅ Scan complete. No XSS vulnerabilities found.",
+  "log_done_vulns": "\n🚨 Scan complete. Found {count} potential XSS vulnerabilities!",
+  "log_error": "❌ Scan error: {error}",
+  "log_page_error": "   ⚠️ Error loading page: {error}",
+  "log_form_error": "   ⚠️ Form error: {error}",
+  "log_vuln_found": "\n🚨 XSS FOUND! [{severity}]",
+  "log_vuln_url": "   URL: {url}",
+  "log_vuln_detail": "   Type: {type}  |  Parameter: {param}",
+  "log_vuln_payload": "   Payload: {payload}\n",
+
+  "export_title": "Export",
+  "export_empty": "No results to export yet.",
+  "export_saved": "Saved to:\n{path}",
+  "export_default_name": "xss_scan_{timestamp}"
+}

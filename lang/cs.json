@@ -1,0 +1,74 @@
+{
+  "app_title": "XSS Scanner — Pen Test nástroj - by BNTHEDEV",
+  "app_subtitle": "Pen-test nástroj — používej pouze na stránkách, které vlastníš nebo máš povolení testovat",
+  "status_idle": "NEČINNÝ",
+  "status_scanning": "SKENUJE",
+  "status_done_clean": "HOTOVO — čisto",
+  "status_done_vulns": "HOTOVO — {count} ZRANITELNOSTÍ!",
+
+  "section_target": "🎯 CÍL",
+  "section_options": "⚙️ MOŽNOSTI",
+  "section_auth": "🔐 AUTH (volitelné)",
+
+  "opt_crawl": "Crawlovat stránku (najít všechny URL)",
+  "opt_forms": "Testovat formuláře (GET/POST)",
+  "opt_params": "Testovat URL parametry",
+  "opt_headers": "Testovat HTTP hlavičky",
+  "opt_cookies": "Testovat cookies",
+
+  "label_delay": "Zpoždění mezi requesty (ms):",
+  "label_maxpages": "Max stránek ke crawlování:",
+  "label_payloads": "Payloadů: {count}",
+  "label_cookie": "Cookie:",
+  "label_auth": "Auth hlavička (Bearer ...):",
+
+  "btn_start": "▶  SPUSTIT SCAN",
+  "btn_stop": "⏹  ZASTAVIT",
+  "btn_export": "💾  Exportovat výsledky",
+
+  "stat_tested": "TESTOVÁNO",
+  "stat_vulns": "ZRANITELNOSTI",
+  "stat_forms": "FORMULÁŘE",
+  "stat_pages": "STRÁNKY",
+
+  "tab_log": "📋 Live log",
+  "tab_vulns": "🚨 Zranitelnosti",
+  "tab_payloads": "💉 Payloady ({count})",
+
+  "col_url": "URL",
+  "col_type": "Typ",
+  "col_param": "Parametr",
+  "col_payload": "Payload",
+  "col_severity": "Závažnost",
+  "detail_label": "Detail:",
+  "detail_text": "URL: {url}\nTyp: {type}  |  Parametr: {param}  |  Závažnost: {severity}\nPayload: {payload}",
+
+  "lang_label": "🌐 Jazyk:",
+
+  "confirm_title": "Potvrzení",
+  "confirm_msg": "Spustit XSS scan na:\n{url}\n\nPoužívej tento nástroj POUZE na stránkách, které vlastníš nebo máš písemné povolení testovat.\n\nPokračovat?",
+  "warn_no_url_title": "Chybí URL",
+  "warn_no_url_msg": "Zadej cílovou URL adresu.",
+
+  "log_start": "🚀 Začínám scan: {url}",
+  "log_crawling": "🕷️  Crawluji stránku...",
+  "log_crawled": "   Nalezeno {count} URL adres.",
+  "log_testing": "🔍 Testuji: {url}",
+  "log_params": "   Parametry: {params}",
+  "log_forms": "   Formuláře: {count}",
+  "log_stopped": "⏹ Uživatel zastavil scan.",
+  "log_done_clean": "\n✅ Scan dokončen. Žádné XSS zranitelnosti nenalezeny.",
+  "log_done_vulns": "\n🚨 Scan dokončen. Nalezeno {count} potenciálních XSS zranitelností!",
+  "log_error": "❌ Chyba scanu: {error}",
+  "log_page_error": "   ⚠️ Chyba při načítání stránky: {error}",
+  "log_form_error": "   ⚠️ Chyba formuláře: {error}",
+  "log_vuln_found": "\n🚨 XSS NALEZENO! [{severity}]",
+  "log_vuln_url": "   URL: {url}",
+  "log_vuln_detail": "   Typ: {type}  |  Parametr: {param}",
+  "log_vuln_payload": "   Payload: {payload}\n",
+
+  "export_title": "Export",
+  "export_empty": "Zatím žádné výsledky k exportu.",
+  "export_saved": "Uloženo do:\n{path}",
+  "export_default_name": "xss_scan_{timestamp}"
+}

@@ -1,0 +1,74 @@
+{
+  "app_title": "XSS Сканер — Инструмент пен-теста - by BNTHEDEV",
+  "app_subtitle": "Инструмент пен-теста — используй только на сайтах, которыми владеешь или имеешь разрешение тестировать",
+  "status_idle": "ОЖИДАНИЕ",
+  "status_scanning": "СКАНИРОВАНИЕ",
+  "status_done_clean": "ГОТОВО — чисто",
+  "status_done_vulns": "ГОТОВО — {count} УЯЗВИМОСТЕЙ!",
+
+  "section_target": "🎯 ЦЕЛЬ",
+  "section_options": "⚙️ ПАРАМЕТРЫ",
+  "section_auth": "🔐 АВТОРИЗАЦИЯ (необязательно)",
+
+  "opt_crawl": "Сканировать страницу (найти все URL)",
+  "opt_forms": "Тестировать формы (GET/POST)",
+  "opt_params": "Тестировать URL параметры",
+  "opt_headers": "Тестировать HTTP заголовки",
+  "opt_cookies": "Тестировать cookies",
+
+  "label_delay": "Задержка между запросами (мс):",
+  "label_maxpages": "Макс. страниц для сканирования:",
+  "label_payloads": "Пейлоадов: {count}",
+  "label_cookie": "Cookie:",
+  "label_auth": "Заголовок Auth (Bearer ...):",
+
+  "btn_start": "▶  ЗАПУСТИТЬ СКАН",
+  "btn_stop": "⏹  ОСТАНОВИТЬ",
+  "btn_export": "💾  Экспорт результатов",
+
+  "stat_tested": "ПРОВЕРЕНО",
+  "stat_vulns": "УЯЗВИМОСТИ",
+  "stat_forms": "ФОРМЫ",
+  "stat_pages": "СТРАНИЦЫ",
+
+  "tab_log": "📋 Лог",
+  "tab_vulns": "🚨 Уязвимости",
+  "tab_payloads": "💉 Пейлоады ({count})",
+
+  "col_url": "URL",
+  "col_type": "Тип",
+  "col_param": "Параметр",
+  "col_payload": "Пейлоад",
+  "col_severity": "Критичность",
+  "detail_label": "Детали:",
+  "detail_text": "URL: {url}\nТип: {type}  |  Параметр: {param}  |  Критичность: {severity}\nПейлоад: {payload}",
+
+  "lang_label": "🌐 Язык:",
+
+  "confirm_title": "Подтверждение",
+  "confirm_msg": "Запустить XSS скан на:\n{url}\n\nИспользуй этот инструмент ТОЛЬКО на сайтах, которыми владеешь или имеешь письменное разрешение тестировать.\n\nПродолжить?",
+  "warn_no_url_title": "Нет URL",
+  "warn_no_url_msg": "Введи целевой URL адрес.",
+
+  "log_start": "🚀 Начинаю скан: {url}",
+  "log_crawling": "🕷️  Сканирую страницу...",
+  "log_crawled": "   Найдено {count} URL адресов.",
+  "log_testing": "🔍 Тестирую: {url}",
+  "log_params": "   Параметры: {params}",
+  "log_forms": "   Формы: {count}",
+  "log_stopped": "⏹ Скан остановлен пользователем.",
+  "log_done_clean": "\n✅ Скан завершён. XSS уязвимости не найдены.",
+  "log_done_vulns": "\n🚨 Скан завершён. Найдено {count} потенциальных XSS уязвимостей!",
+  "log_error": "❌ Ошибка скана: {error}",
+  "log_page_error": "   ⚠️ Ошибка загрузки страницы: {error}",
+  "log_form_error": "   ⚠️ Ошибка формы: {error}",
+  "log_vuln_found": "\n🚨 XSS НАЙДЕНО! [{severity}]",
+  "log_vuln_url": "   URL: {url}",
+  "log_vuln_detail": "   Тип: {type}  |  Параметр: {param}",
+  "log_vuln_payload": "   Пейлоад: {payload}\n",
+
+  "export_title": "Экспорт",
+  "export_empty": "Пока нет результатов для экспорта.",
+  "export_saved": "Сохранено в:\n{path}",
+  "export_default_name": "xss_scan_{timestamp}"
+}
