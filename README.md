@@ -11,21 +11,6 @@ A cross-platform GUI tool for detecting XSS (Cross-Site Scripting) vulnerabiliti
  
 ---
  
-## Features
- 
-| Feature | Requests mode | Playwright mode |
-|---|---|---|
-| Reflected XSS (URL params) | ✅ | ✅ |
-| Reflected XSS (forms) | ✅ | ✅ |
-| DOM-based XSS | ❌ | ✅ |
-| Stored XSS detection | ✅ | ✅ |
-| JS-rendered page crawling | ❌ | ✅ |
-| Header injection testing | ✅ | ❌ |
-| Custom payload list (.txt) | ✅ | ✅ |
-| Multi-language UI (CS/EN/RU) | ✅ | ✅ |
-| Cookie / Auth header support | ✅ | ✅ |
-| JSON export | ✅ | ✅ |
- 
 ### Scan modes
  
 **Requests mode** — Fast, lightweight. Sends HTTP requests directly and checks responses for reflected payloads. Good for simple sites and quick reconnaissance.
