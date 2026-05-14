@@ -1,4 +1,4 @@
-# ⚡ XSS Scanner
+# XSS Scanner
  
 > **For educational purposes only.** Only use on systems you own or have explicit written permission to test.
  
