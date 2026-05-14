@@ -61,7 +61,6 @@ DETECTION_PATTERNS = [
     r"alert\(document\.",
 ]
 
-# Prefix pro stored XSS markery
 STORED_MARKER_PREFIX = "xss-probe-"
 
 BG        = "#0d1117"
@@ -84,7 +83,6 @@ LANGUAGES = {
     "Русский": "ru",
 }
 
-# ── Playwright dostupnost ─────────────────────────────────────────────────────
 try:
     from playwright.sync_api import sync_playwright
     PLAYWRIGHT_AVAILABLE = True
@@ -134,7 +132,6 @@ class XSSScanner:
         self._forms_found    = 0
         self._pages_crawled  = 0
 
-        # Stored XSS: marker_id -> {url, param, field, payload}
         self._stored_markers = {}
 
         self.session = requests.Session()
@@ -143,7 +140,6 @@ class XSSScanner:
         self._translatable = []
         self._build_ui()
 
-    # ── překlad ───────────────────────────────────────────────────────────────
 
     def _change_language(self, lang_name):
         self.i18n.load(LANGUAGES[lang_name])
@@ -174,7 +170,6 @@ class XSSScanner:
             ):
                 self.tree.heading(col, text=self.i18n.t(key))
 
-    # ── UI ────────────────────────────────────────────────────────────────────
 
     def _build_ui(self):
         topbar = tk.Frame(self.root, bg=BG2, height=52)
@@ -224,7 +219,6 @@ class XSSScanner:
         self._set_status(self.i18n.t("status_idle"), MUTED)
 
     def _build_left(self, parent):
-        # ── cíl ───────────────────────────────────────────────────────────────
         sec1 = tk.Label(parent, font=("Segoe UI", 9, "bold"), bg=BG, fg=MUTED)
         sec1.pack(anchor="w", pady=(10, 3))
         self._register(sec1, "section_target")
@@ -235,7 +229,6 @@ class XSSScanner:
                  highlightthickness=1, highlightbackground=BORDER,
                  highlightcolor=BLUE).pack(fill="x", pady=(0, 8), ipady=6, padx=2)
 
-        # ── možnosti ──────────────────────────────────────────────────────────
         sec2 = tk.Label(parent, font=("Segoe UI", 9, "bold"), bg=BG, fg=MUTED)
         sec2.pack(anchor="w", pady=(6, 3))
         self._register(sec2, "section_options")
@@ -245,8 +238,8 @@ class XSSScanner:
         self.opt_params  = tk.BooleanVar(value=True)
         self.opt_headers = tk.BooleanVar(value=False)
         self.opt_cookies = tk.BooleanVar(value=False)
-        self.opt_stored  = tk.BooleanVar(value=True)   # Stored XSS
-        self.opt_jscrawl = tk.BooleanVar(value=False)  # JS crawling (jen PW)
+        self.opt_stored  = tk.BooleanVar(value=True)  
+        self.opt_jscrawl = tk.BooleanVar(value=False)  
 
         for key, var in [
             ("opt_crawl",   self.opt_crawl),
@@ -265,7 +258,6 @@ class XSSScanner:
 
         tk.Frame(parent, bg=BORDER, height=1).pack(fill="x", pady=8)
 
-        # ── delay / maxpages ──────────────────────────────────────────────────
         r1 = tk.Frame(parent, bg=BG)
         r1.pack(fill="x")
         l1 = tk.Label(r1, font=FONT_SM, bg=BG, fg=MUTED)
@@ -288,7 +280,6 @@ class XSSScanner:
                    insertbackground=FG, bd=0,
                    highlightthickness=1, highlightbackground=BORDER).pack(side="right")
 
-        # ── payload sekce ─────────────────────────────────────────────────────
         pl_lbl = tk.Label(parent, font=FONT_SM, bg=BG, fg=MUTED)
         pl_lbl.pack(anchor="w", pady=2)
         self._register(pl_lbl, "label_payloads", count=len(XSS_PAYLOADS))
@@ -314,7 +305,6 @@ class XSSScanner:
 
         tk.Frame(parent, bg=BORDER, height=1).pack(fill="x", pady=8)
 
-        # ── Playwright sekce ──────────────────────────────────────────────────
         sec_pw = tk.Label(parent, font=("Segoe UI", 9, "bold"), bg=BG, fg=MUTED)
         sec_pw.pack(anchor="w", pady=(4, 3))
         self._register(sec_pw, "section_browser")
@@ -342,7 +332,6 @@ class XSSScanner:
         rb_pw.pack(side="left")
         self._register(rb_pw, "mode_playwright")
 
-        # Playwright sub-options
         self.pw_options_frame = tk.Frame(parent, bg=BG)
 
         self.opt_headless = tk.BooleanVar(value=True)
@@ -354,7 +343,6 @@ class XSSScanner:
         cb_hl.pack(anchor="w", pady=1)
         self._register(cb_hl, "opt_headless")
 
-        # JS crawling checkbox (jen pro Playwright)
         cb_js = tk.Checkbutton(
             self.pw_options_frame, variable=self.opt_jscrawl,
             font=FONT_SM, bg=BG, fg=FG, selectcolor=BG3,
@@ -386,7 +374,6 @@ class XSSScanner:
 
         tk.Frame(parent, bg=BORDER, height=1).pack(fill="x", pady=8)
 
-        # ── auth sekce ────────────────────────────────────────────────────────
         sec3 = tk.Label(parent, font=("Segoe UI", 9, "bold"), bg=BG, fg=MUTED)
         sec3.pack(anchor="w", pady=(4, 3))
         self._register(sec3, "section_auth")
@@ -407,7 +394,6 @@ class XSSScanner:
                                    highlightthickness=1, highlightbackground=BORDER)
         self.auth_entry.pack(fill="x", pady=(0, 8), ipady=4, padx=2)
 
-        # ── tlačítka ──────────────────────────────────────────────────────────
         self.scan_btn = tk.Button(parent, font=("Segoe UI", 11, "bold"),
                                   bg=GREEN, fg="#0d1117", bd=0, cursor="hand2",
                                   activebackground="#2ea043",
@@ -434,7 +420,6 @@ class XSSScanner:
         else:
             self.pw_options_frame.pack_forget()
 
-    # ── pravý panel ───────────────────────────────────────────────────────────
 
     def _build_right(self, parent):
         stats = tk.Frame(parent, bg=BG2)
@@ -532,7 +517,6 @@ class XSSScanner:
         self._register(lbl, label_key)
         return val_lbl
 
-    # ── log / status ──────────────────────────────────────────────────────────
 
     def _log(self, msg, tag=""):
         def _do():
@@ -567,7 +551,6 @@ class XSSScanner:
             severity=v[4], payload=v[3]))
         self.detail_text.config(state="disabled")
 
-    # ── spuštění / zastavení ──────────────────────────────────────────────────
 
     def _start_scan(self):
         url = self.url_var.get().strip()
@@ -637,7 +620,6 @@ class XSSScanner:
             self._set_status(self.i18n.t("status_done_clean"), GREEN)
             self._log(self.i18n.t("log_done_clean"), "ok")
 
-    # ── requests scan ─────────────────────────────────────────────────────────
 
     def _scan_thread(self, base_url):
         try:
@@ -650,13 +632,11 @@ class XSSScanner:
                 urls_to_test = list(set(urls_to_test + crawled))
                 self._log(self.i18n.t("log_crawled", count=len(urls_to_test)), "muted")
 
-            # Fáze 1: reflected XSS
             for url in urls_to_test:
                 if self.stop_flag:
                     break
                 self._test_url(url)
 
-            # Fáze 2: stored XSS — projdi všechny stránky znovu a hledej markery
             if self.opt_stored.get() and self._stored_markers and not self.stop_flag:
                 self._check_stored_xss(urls_to_test)
 
@@ -744,7 +724,6 @@ class XSSScanner:
                 sev = "HIGH" if "<script>" in payload.lower() else "MEDIUM"
                 self._report_vuln(url, "URL param", param, payload, sev)
             elif self.opt_stored.get():
-                # Ulož marker pro stored XSS kontrolu
                 marker = self._make_stored_marker(
                     url, "URL param", param, payload)
                 params[param] = [marker]
@@ -820,7 +799,6 @@ class XSSScanner:
                 return True
         return False
 
-    # ── Stored XSS ────────────────────────────────────────────────────────────
 
     def _make_stored_marker(self, url, vuln_type, param, payload):
         """
@@ -868,7 +846,6 @@ class XSSScanner:
         if remaining == 0:
             self._log(self.i18n.t("log_stored_none"), "muted")
 
-    # ── Playwright scan ───────────────────────────────────────────────────────
 
     def _scan_thread_playwright(self, base_url):
         try:
@@ -891,7 +868,6 @@ class XSSScanner:
                                 "url": base_url
                             }])
 
-                # Crawl — JS nebo statický
                 if self.opt_crawl.get():
                     self._log(self.i18n.t("log_crawling"), "info")
                     if self.opt_jscrawl.get():
@@ -904,13 +880,11 @@ class XSSScanner:
                 else:
                     urls_to_test = [base_url]
 
-                # Fáze 1: reflected + DOM XSS
                 for url in urls_to_test:
                     if self.stop_flag:
                         break
                     self._pw_test_url(context, url)
 
-                # Fáze 2: stored XSS kontrola
                 if self.opt_stored.get() and self._stored_markers and not self.stop_flag:
                     self._pw_check_stored_xss(context, urls_to_test)
 
@@ -943,13 +917,12 @@ class XSSScanner:
                 self._pages_crawled += 1
                 self._update_stats()
 
-                # Sbírej všechny href z DOM po JS renderingu
                 hrefs = page.eval_on_selector_all(
                     "a[href]",
                     "els => els.map(e => e.href)"
                 )
                 for href in hrefs:
-                    href = href.split("#")[0]  # odstraň fragment
+                    href = href.split("#")[0]  
                     if not href:
                         continue
                     if urlparse(href).netloc == domain and href not in visited:
@@ -986,7 +959,6 @@ class XSSScanner:
                         fired = self._pw_navigate_and_check(
                             context, test_url, "URL param", param, payload)
                         if not fired and self.opt_stored.get():
-                            # Odešli marker
                             marker = self._make_stored_marker(
                                 url, "URL param", param, payload)
                             test_p[param] = [marker]
@@ -1159,7 +1131,6 @@ class XSSScanner:
                 page.close()
             time.sleep(self.delay_var.get() / 1000)
 
-    # ── report ────────────────────────────────────────────────────────────────
 
     def _report_vuln(self, url, vuln_type, param, payload, severity):
         self.results.append({
@@ -1180,7 +1151,6 @@ class XSSScanner:
             values=(su, vuln_type, param, sp, severity),
             tags=(tag,)))
 
-    # ── export ────────────────────────────────────────────────────────────────
 
     def _export(self):
         if not self.results:
@@ -1207,7 +1177,6 @@ class XSSScanner:
             self.i18n.t("export_title"),
             self.i18n.t("export_saved", path=path))
 
-    # ── custom payloady ───────────────────────────────────────────────────────
 
     def _load_custom_payloads(self):
         path = filedialog.askopenfilename(
