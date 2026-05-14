@@ -70,5 +70,37 @@
   "export_title": "Экспорт",
   "export_empty": "Пока нет результатов для экспорта.",
   "export_saved": "Сохранено в:\n{path}",
-  "export_default_name": "xss_scan_{timestamp}"
+  "export_default_name": "xss_scan_{timestamp}",
+  
+  "btn_load_payloads": "📂 Загрузить пейлоады (.txt)",
+  "load_pl_dialog_title": "Выберите файл с пейлоадами",
+  "load_pl_empty_title": "Пустой файл",
+  "load_pl_empty_msg": "Файл не содержит допустимых пейлоадов.",
+  "load_pl_loaded": "✔ Загружено {count} пользовательских ({total} всего)",
+  "load_pl_error_title": "Ошибка загрузки",
+  "load_pl_error_msg": "Не удалось прочитать файл:\n{error}",
+  "help_title": "Формат файла пейлоадов",
+  "help_body": "Файл должен быть обычным текстом (.txt) в кодировке UTF-8.\n\nПравила:\n• Каждый пейлоад на отдельной строке\n• Пустые строки игнорируются\n• Строки, начинающиеся с #, являются комментариями\n\nПример файла:\n─────────────────────────────\n# Мои пейлоады\n<script>alert('test')</script>\n<img src=x onerror=alert(1)>\n\"><svg onload=alert(document.domain)>\n# DOM-based\n'-alert(1)-'\n─────────────────────────────\n\nЗагруженные пейлоады добавляются к стандартным (дубликаты пропускаются).",
+
+  "section_browser": "Метод сканирования",
+  "mode_requests":   "Requests (быстро)",
+  "mode_playwright": "Playwright (браузер)",
+  "opt_headless":    "Headless (без окна)",
+  "label_browser":   "Браузер:",
+  "pw_installed":    "✔ Playwright установлен",
+  "pw_not_installed":"✘ Playwright не установлен\n  → pip install playwright\n  → playwright install",
+  "pw_error_title":  "Playwright отсутствует",
+  "pw_error_msg":    "Playwright не установлен.\nВыполни:\n  pip install playwright\n  playwright install",
+  "status_scanning_browser": "● Сканирование ({browser})...",
+  "log_pw_start":    "Запуск браузера: {browser}",
+  "log_pw_testing":  "[PW] Тестирую: {url}",
+  "log_pw_alert_fired": "⚠ Alert() сработал! Поле: {param}",
+
+  "opt_stored":           "Обнаружение Stored XSS",
+  "opt_jscrawl":          "JS краулинг (Playwright)",
+  "log_stored_check":     "Фаза 2: Поиск маркеров Stored XSS ({count} маркеров)...",
+  "log_stored_found":     "⚠ Stored XSS! Маркер найден на: {url} | Поле: {param}",
+  "log_stored_none":      "Stored XSS: маркеры не найдены.",
+  "log_pw_jscrawl":       "JS краулинг через браузер...",
+  "log_pw_jscrawl_found": "  JS ссылка: {url}"
 }

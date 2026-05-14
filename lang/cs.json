@@ -70,5 +70,37 @@
   "export_title": "Export",
   "export_empty": "Zatím žádné výsledky k exportu.",
   "export_saved": "Uloženo do:\n{path}",
-  "export_default_name": "xss_scan_{timestamp}"
+  "export_default_name": "xss_scan_{timestamp}",
+
+  "btn_load_payloads": "📂 Načíst payloady (.txt)",
+  "load_pl_dialog_title": "Vybrat soubor s payloady",
+  "load_pl_empty_title": "Prázdný soubor",
+  "load_pl_empty_msg": "Soubor neobsahuje žádné platné payloady.",
+  "load_pl_loaded": "✔ Načteno {count} vlastních ({total} celkem)",
+  "load_pl_error_title": "Chyba načítání",
+  "load_pl_error_msg": "Soubor nelze přečíst:\n{error}",
+  "help_title": "Formát souboru s payloady",
+  "help_body": "Soubor musí být prostý text (.txt) v kódování UTF-8.\n\nFormát:\n• Každý payload na samostatném řádku\n• Prázdné řádky jsou ignorovány\n• Řádky začínající # jsou komentáře\n\nPříklad souboru:\n─────────────────────────────\n# Hello world!\n<script>alert('test')</script>\n<img src=x onerror=alert(1)>\n\"><svg onload=alert(document.domain)>\n# DOM-based\n'-alert(1)-'\n─────────────────────────────\n\nNačtené payloady se přidají k výchozím (duplicity jsou přeskočeny).",
+
+  "section_browser": "Metoda skenování",
+  "mode_requests":   "Requests (rychlé)",
+  "mode_playwright": "Playwright (prohlížeč)",
+  "opt_headless":    "Headless (bez okna)",
+  "label_browser":   "Prohlížeč:",
+  "pw_installed":    "✔ Playwright je nainstalován",
+  "pw_not_installed":"✘ Playwright není nainstalován\n  → pip install playwright\n  → playwright install",
+  "pw_error_title":  "Playwright chybí",
+  "pw_error_msg":    "Playwright není nainstalován.\nSpusť:\n  pip install playwright\n  playwright install",
+  "status_scanning_browser": "● Skenuji ({browser})...",
+  "log_pw_start":    "Spouštím prohlížeč: {browser}",
+  "log_pw_testing":  "[PW] Testuji: {url}",
+  "log_pw_alert_fired": "⚠ Alert() spuštěn! Pole: {param}",
+
+  "opt_stored":           "Detekovat Stored XSS",
+  "opt_jscrawl":          "JS crawling (Playwright)",
+  "log_stored_check":     "Fáze 2: Hledám stored XSS markery ({count} markerů)...",
+  "log_stored_found":     "⚠ Stored XSS! Marker nalezen na: {url} | Pole: {param}",
+  "log_stored_none":      "Stored XSS: žádné markery nenalezeny.",
+  "log_pw_jscrawl":       "JS crawling přes prohlížeč...",
+  "log_pw_jscrawl_found": "  JS odkaz: {url}"
 }

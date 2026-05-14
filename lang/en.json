@@ -70,5 +70,37 @@
   "export_title": "Export",
   "export_empty": "No results to export yet.",
   "export_saved": "Saved to:\n{path}",
-  "export_default_name": "xss_scan_{timestamp}"
+  "export_default_name": "xss_scan_{timestamp}",
+
+  "btn_load_payloads": "📂 Load payloads (.txt)",
+  "load_pl_dialog_title": "Select payload file",
+  "load_pl_empty_title": "Empty file",
+  "load_pl_empty_msg": "The file contains no valid payloads.",
+  "load_pl_loaded": "✔ Loaded {count} custom ({total} total)",
+  "load_pl_error_title": "Load error",
+  "load_pl_error_msg": "Cannot read the file:\n{error}",
+  "help_title": "Payload file format",
+  "help_body": "The file must be plain text (.txt) in UTF-8 encoding.\n\nFormat:\n• One payload per line\n• Empty lines are ignored\n• Lines starting with # are comments\n\nExample file:\n─────────────────────────────\n# Hello world! \n<script>alert('test')</script>\n<img src=x onerror=alert(1)>\n\"><svg onload=alert(document.domain)>\n# DOM-based\n'-alert(1)-'\n─────────────────────────────\n\nLoaded payloads are appended to the defaults (duplicates are skipped).",
+
+  "section_browser": "Scan method",
+  "mode_requests":   "Requests (fast)",
+  "mode_playwright": "Playwright (browser)",
+  "opt_headless":    "Headless (no window)",
+  "label_browser":   "Browser:",
+  "pw_installed":    "✔ Playwright is installed",
+  "pw_not_installed":"✘ Playwright not installed\n  → pip install playwright\n  → playwright install",
+  "pw_error_title":  "Playwright missing",
+  "pw_error_msg":    "Playwright is not installed.\nRun:\n  pip install playwright\n  playwright install",
+  "status_scanning_browser": "● Scanning ({browser})...",
+  "log_pw_start":    "Launching browser: {browser}",
+  "log_pw_testing":  "[PW] Testing: {url}",
+  "log_pw_alert_fired": "⚠ Alert() fired! Field: {param}",
+
+  "opt_stored":           "Detect Stored XSS",
+  "opt_jscrawl":          "JS crawling (Playwright)",
+  "log_stored_check":     "Phase 2: Searching for stored XSS markers ({count} markers)...",
+  "log_stored_found":     "⚠ Stored XSS! Marker found at: {url} | Field: {param}",
+  "log_stored_none":      "Stored XSS: no markers found.",
+  "log_pw_jscrawl":       "JS crawling via browser...",
+  "log_pw_jscrawl_found": "  JS link: {url}"
 }
